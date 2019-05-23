@@ -44,15 +44,23 @@ public class PowerBallGenerator {
 		} 
   }
   
+  /**
+   * Generates numberOfTickets tickets.
+   * @param numberOfTickets
+   * @return
+   * @throws ClientProtocolException
+   * @throws IOException
+   */
   public List<PowerBallTicket> generateTickets(int numberOfTickets) throws ClientProtocolException, IOException  {
   		List<PowerBallTicket> tickets = new ArrayList<PowerBallTicket>();
    
   	  HashBag<Integer> whiteBallsBag = new HashBag<Integer>();
     HashBag<Integer> powerBallsBag = new HashBag<Integer>();
 
-    // Get the number of times each ball has been selected and put in bag
+    // Get the number of times each ball has been selected in the past and put in bag
     getBallDistributions(whiteBallsBag, powerBallsBag);
 
+    // Get the new weight of each ball
     Double[] whiteBallsUpdatedWeight = getNewBallWeight(whiteBallsBag, NUMBER_OF_WHITE_BALLS);
     Double[] powerBallsUpdatedWeight = getNewBallWeight(powerBallsBag, NUMBER_OF_POWER_BALLS);
 
